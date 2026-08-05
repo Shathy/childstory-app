@@ -1,12 +1,12 @@
 # ---- deps ----
-FROM node:20-slim AS deps
+FROM node:22-slim AS deps
 WORKDIR /app
 COPY package.json ./
 # puppeteer-core has NO bundled browser -> npm install stays fast & small
 RUN npm install --omit=dev
 
 # ---- build ----
-FROM node:20-slim AS build
+FROM node:22-slim AS build
 WORKDIR /app
 COPY package.json ./
 RUN npm install
@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # ---- runtime ----
-FROM node:20-slim
+FROM node:22-slim
 WORKDIR /app
 
 # System Chromium (Debian package) — much lighter than bundling a browser
