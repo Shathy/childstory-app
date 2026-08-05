@@ -71,7 +71,9 @@ export class ExportService {
     try {
       const page = await browser.newPage();
       await page.setViewport({ width: 900, height: 1200 }); // keeps rendering memory bounded
-      await page.setContent(html, { waitUntil: 'networkidle0' }); // wait for the web font to load
+      // No external resources are loaded anymore (font is installed locally),
+      // so we don't need to wait on network activity — just DOM ready.
+      await page.setContent(html, { waitUntil: 'domcontentloaded', timeout: 60000 });
       const buffer = await page.pdf({
         format: 'A4',
         printBackground: true,
