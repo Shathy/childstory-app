@@ -28,11 +28,9 @@ export function buildStoryHtml(story: any): string {
 <head>
 <meta charset="UTF-8" />
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-
   * { box-sizing: border-box; }
   body {
-    font-family: ${rtl ? "'Cairo', sans-serif" : "'Helvetica Neue', Arial, sans-serif"};
+    font-family: ${rtl ? "'Noto Naskh Arabic', 'Noto Sans Arabic', sans-serif" : "'Helvetica Neue', Arial, sans-serif"};
     margin: 0;
   }
   .cover {
