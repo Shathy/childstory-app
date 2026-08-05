@@ -23,6 +23,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
     chromium \
     fonts-noto-core \
+    fonts-noto-naskh-arabic \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
